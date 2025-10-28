@@ -5,7 +5,8 @@
 ### Social Recipe Building Application
 
 
-Logo:<img width="1114" height="964" alt="Untitled" src="https://github.com/user-attachments/assets/0373e5aa-2bd7-47af-b9b0-163011f1b0da" />
+<img width="98" height="78" alt="Screenshot 2025-10-28 at 6 38 08 pm" src="https://github.com/user-attachments/assets/639dbfe8-4d80-4006-8377-74b93607b0c5" />
+
 
 
 ![React](https://img.shields.io/badge/React-18.x-61DAFB?style=flat&logo=react&logoColor=white)
