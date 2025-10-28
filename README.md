@@ -4,7 +4,9 @@
 
 ### Social Recipe Building Application
 
-*Create, Share, and Discover Amazing Recipes*
+
+Logo:<img width="1114" height="964" alt="Untitled" src="https://github.com/user-attachments/assets/0373e5aa-2bd7-47af-b9b0-163011f1b0da" />
+
 
 ![React](https://img.shields.io/badge/React-18.x-61DAFB?style=flat&logo=react&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-4.2.7-092E20?style=flat&logo=django&logoColor=white)
