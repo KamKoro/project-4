@@ -251,6 +251,40 @@ python manage.py seed_data           # Add sample data
 
 For detailed troubleshooting, see [Backend README](backend/README.md) and [Frontend README](frontend/README.md).
 
+## 🚀 Deployment
+
+> **🎯 Ready to deploy?** See **[START_HERE.md](START_HERE.md)** for deployment guide navigation!
+
+This application is **fully configured and ready** to deploy to Heroku!
+
+### Quick Deployment Options
+
+| Method | Command | Best For |
+|--------|---------|----------|
+| **Automated** | `./deploy.sh` | First-time deployment |
+| **Course Guide** | See [COURSE_DEPLOYMENT_GUIDE.md](COURSE_DEPLOYMENT_GUIDE.md) | Following bootcamp approach |
+| **Quick Manual** | See [QUICK_START_DEPLOY.md](QUICK_START_DEPLOY.md) | Experienced users |
+
+### 📚 Complete Deployment Documentation
+
+- 🎯 **[START_HERE.md](START_HERE.md)** - Guide navigation & FAQ
+- 🎓 **[COURSE_DEPLOYMENT_GUIDE.md](COURSE_DEPLOYMENT_GUIDE.md)** - Bootcamp-aligned guide
+- 📊 **[DEPLOYMENT_SUMMARY.md](DEPLOYMENT_SUMMARY.md)** - What was configured
+- ⚡ **[QUICK_START_DEPLOY.md](QUICK_START_DEPLOY.md)** - 5-minute reference
+- 📚 **[DEPLOYMENT.md](DEPLOYMENT.md)** - Comprehensive guide
+- ✅ **[DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** - Pre-flight checklist
+
+### Environment Variables
+
+Only **3 variables** needed on Heroku:
+```bash
+SECRET_KEY=<generate-via-django-utils>
+ON_HEROKU=1
+CORS_ALLOWED_ORIGINS=https://your-app-name.herokuapp.com
+```
+
+DEBUG, ALLOWED_HOSTS, and DATABASE are automatically configured via `ON_HEROKU`.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps:

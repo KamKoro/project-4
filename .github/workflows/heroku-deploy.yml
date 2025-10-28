@@ -1,0 +1,37 @@
+# Optional: GitHub Actions workflow for automatic Heroku deployment
+# Uncomment and configure if you want automatic deployments on push to main
+
+# name: Deploy to Heroku
+# 
+# on:
+#   push:
+#     branches:
+#       - main
+# 
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       
+#       # Build React app
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: '16'
+#       
+#       - name: Install frontend dependencies
+#         run: cd frontend && npm install
+#       
+#       - name: Build React app
+#         run: cd frontend && npm run build
+#       
+#       # Deploy to Heroku
+#       - name: Deploy to Heroku
+#         uses: akhileshns/heroku-deploy@v3.12.12
+#         with:
+#           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#           heroku_app_name: "your-app-name"
+#           heroku_email: "your-email@example.com"
+#           buildpack: "heroku/python"
+
