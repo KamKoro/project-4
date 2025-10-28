@@ -200,7 +200,9 @@ For complete setup instructions, API documentation, and troubleshooting:
 ## 📸 Screenshots
 
 ### Home Page
-![Pulp Kitchen Home Page](screenshots/home-page.png)
+
+![Pulp Kitchen Home Page](<img width="2223" height="697" alt="Screenshot 2025-10-28 at 8 22 21 pm" src="https://github.com/user-attachments/assets/b0d3ff00-1d0d-42e6-9d97-efd73e365581" />
+)
 *Landing page showcasing the platform's main features and featured recipes*
 
 ---
