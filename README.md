@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🍳 Pulp Kitchen
+# Pulp Kitchen
 
 ### Social Recipe Building Application
 
@@ -24,20 +24,20 @@ Pulp Kitchen is a full-stack social recipe platform where food enthusiasts can c
 ## ✨ Features
 
 ### Core Features
-- 🔐 **User Authentication** - Secure registration and JWT-based login
-- 📝 **Recipe Management** - Create, edit, and delete your own recipes
-- 🌍 **Public Recipe Feed** - Discover recipes from the community
-- ⭐ **Rating System** - Rate recipes with half-star precision (0.5-5 stars)
-- 💾 **Save Recipes** - Bookmark your favorite recipes for later
-- 👤 **User Profiles** - Personalized profiles with bio and username display
-- 🥗 **Ingredient Database** - 500+ pre-populated ingredients with categories
-- 📊 **Difficulty Levels** - Easy, Medium, Hard recipe classifications
-- 🍽️ **Food Types** - 12 categories (appetizer, main course, dessert, soup, salad, etc.)
-- 🌎 **Cuisine Filter** - 17 cuisines (Italian, Mexican, Chinese, Thai, Japanese, Indian, French, Greek, Spanish, Middle Eastern, Korean, Vietnamese, Mediterranean, Caribbean, African, American, Other)
-- 💬 **Comments** - Discuss and share feedback on recipes
-- 🔍 **Advanced Filtering** - Search by name, cuisine, difficulty, cook time, and ratings (compact single-row filter bar)
-- 🔄 **Sort Options** - Newest, oldest, or alphabetical ordering
-- 📏 **Unit Conversion** - Automatic conversion between metric and imperial measurements
+- **User Authentication** - Secure registration and JWT-based login
+- **Recipe Management** - Create, edit, and delete your own recipes
+- **Public Recipe Feed** - Discover recipes from the community
+- **Rating System** - Rate recipes with half-star precision (0.5-5 stars)
+- **Save Recipes** - Bookmark your favorite recipes for later
+- **User Profiles** - Personalized profiles with bio and username display
+- **Ingredient Database** - 500+ pre-populated ingredients with categories
+- **Difficulty Levels** - Easy, Medium, Hard recipe classifications
+- **Food Types** - 12 categories (appetizer, main course, dessert, soup, salad, etc.)
+- **Cuisine Filter** - 17 cuisines (Italian, Mexican, Chinese, Thai, Japanese, Indian, French, Greek, Spanish, Middle Eastern, Korean, Vietnamese, Mediterranean, Caribbean, African, American, Other)
+- **Comments** - Discuss and share feedback on recipes
+- **Advanced Filtering** - Search by name, cuisine, difficulty, cook time, and ratings (compact single-row filter bar)
+- **Sort Options** - Newest, oldest, or alphabetical ordering
+- **Unit Conversion** - Automatic conversion between metric and imperial measurements
 
 ## 🛠 Tech Stack
 
@@ -251,9 +251,9 @@ python manage.py seed_data           # Add sample data
 
 For detailed troubleshooting, see [Backend README](backend/README.md) and [Frontend README](frontend/README.md).
 
-## 🚀 Deployment
+## Deployment
 
-> **🎯 Ready to deploy?** See **[START_HERE.md](START_HERE.md)** for deployment guide navigation!
+> ** Ready to deploy?** See **[START_HERE.md](START_HERE.md)** for deployment guide navigation!
 
 This application is **fully configured and ready** to deploy to Heroku!
 
@@ -265,14 +265,14 @@ This application is **fully configured and ready** to deploy to Heroku!
 | **Course Guide** | See [COURSE_DEPLOYMENT_GUIDE.md](COURSE_DEPLOYMENT_GUIDE.md) | Following bootcamp approach |
 | **Quick Manual** | See [QUICK_START_DEPLOY.md](QUICK_START_DEPLOY.md) | Experienced users |
 
-### 📚 Complete Deployment Documentation
+### Complete Deployment Documentation
 
-- 🎯 **[START_HERE.md](START_HERE.md)** - Guide navigation & FAQ
-- 🎓 **[COURSE_DEPLOYMENT_GUIDE.md](COURSE_DEPLOYMENT_GUIDE.md)** - Bootcamp-aligned guide
-- 📊 **[DEPLOYMENT_SUMMARY.md](DEPLOYMENT_SUMMARY.md)** - What was configured
-- ⚡ **[QUICK_START_DEPLOY.md](QUICK_START_DEPLOY.md)** - 5-minute reference
-- 📚 **[DEPLOYMENT.md](DEPLOYMENT.md)** - Comprehensive guide
-- ✅ **[DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** - Pre-flight checklist
+- **[START_HERE.md](START_HERE.md)** - Guide navigation & FAQ
+- **[COURSE_DEPLOYMENT_GUIDE.md](COURSE_DEPLOYMENT_GUIDE.md)** - Bootcamp-aligned guide
+- **[DEPLOYMENT_SUMMARY.md](DEPLOYMENT_SUMMARY.md)** - What was configured
+- **[QUICK_START_DEPLOY.md](QUICK_START_DEPLOY.md)** - 5-minute reference
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Comprehensive guide
+- **[DEPLOYMENT_CHECKLIST.md](DEPLOYMENT_CHECKLIST.md)** - Pre-flight checklist
 
 ### Environment Variables
 
@@ -285,7 +285,7 @@ CORS_ALLOWED_ORIGINS=https://your-app-name.herokuapp.com
 
 DEBUG, ALLOWED_HOSTS, and DATABASE are automatically configured via `ON_HEROKU`.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -295,11 +295,11 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👨‍💻 Author
+## Author
 
 **Your Name**
 - GitHub: [@yourusername](https://github.com/yourusername)
@@ -309,19 +309,19 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 This project is organized with separate documentation for each major component:
 
-- 📘 **[Backend README](backend/README.md)** - Complete Django/DRF documentation
+- **[Backend README](backend/README.md)** - Complete Django/DRF documentation
   - API endpoints reference
   - Database models & schema
   - Management commands
   - Deployment guide
   
-- 📗 **[Frontend README](frontend/README.md)** - Complete React documentation
+- **[Frontend README](frontend/README.md)** - Complete React documentation
   - Component structure
   - State management
   - API integration
   - Styling guide
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Recipe data and inspiration from various cooking communities
 - Icons by [Lucide](https://lucide.dev)
