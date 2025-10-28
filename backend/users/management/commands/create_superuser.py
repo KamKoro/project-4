@@ -7,11 +7,12 @@ class Command(BaseCommand):
     help = 'Create a superuser for development'
 
     def handle(self, *args, **options):
-        if User.objects.filter(is_superuser=True).exists():
+        # Delete existing admin user if exists
+        if User.objects.filter(username='admin').exists():
+            User.objects.filter(username='admin').delete()
             self.stdout.write(
-                self.style.WARNING('Superuser already exists.')
+                self.style.WARNING('Deleted existing admin user.')
             )
-            return
 
         user = User.objects.create_superuser(
             username='admin',
