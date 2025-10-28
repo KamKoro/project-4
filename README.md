@@ -5,6 +5,7 @@
 ### Social Recipe Building Application
 
 
+Logo: 
 <img width="98" height="78" alt="Screenshot 2025-10-28 at 6 38 08 pm" src="https://github.com/user-attachments/assets/639dbfe8-4d80-4006-8377-74b93607b0c5" />
 
 
