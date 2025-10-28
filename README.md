@@ -259,20 +259,6 @@ python manage.py seed_data           # Add sample data
 
 For detailed troubleshooting, see [Backend README](backend/README.md) and [Frontend README](frontend/README.md).
 
-## Deployment
-
-> ** Ready to deploy?** See **[START_HERE.md](START_HERE.md)** for deployment guide navigation!
-
-This application is **fully configured and ready** to deploy to Heroku!
-
-### Quick Deployment Options
-
-| Method | Command | Best For |
-|--------|---------|----------|
-| **Automated** | `./deploy.sh` | First-time deployment |
-| **Course Guide** | See [COURSE_DEPLOYMENT_GUIDE.md](COURSE_DEPLOYMENT_GUIDE.md) | Following bootcamp approach |
-| **Quick Manual** | See [QUICK_START_DEPLOY.md](QUICK_START_DEPLOY.md) | Experienced users |
-
 ### Complete Deployment Documentation
 
 - **[START_HERE.md](START_HERE.md)** - Guide navigation & FAQ
