@@ -159,14 +159,15 @@ SIMPLE_JWT = {
 # CORS settings
 if 'ON_HEROKU' in os.environ:
     # In production, allow requests from the Heroku app
-    CORS_ALLOWED_ORIGINS = [
-        config('CORS_ALLOWED_ORIGINS', default='')
-    ]
+    cors_origin = config('CORS_ALLOWED_ORIGINS', default='')
+    CORS_ALLOWED_ORIGINS = [cors_origin] if cors_origin else []
 else:
     # In development, allow requests from local React dev server
     CORS_ALLOWED_ORIGINS = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
     ]
 
 CORS_ALLOW_CREDENTIALS = True

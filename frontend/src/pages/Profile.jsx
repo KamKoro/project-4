@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../contexts/AuthContext';
 import { useQuery } from 'react-query';
 import { recipesAPI } from '../services/api';
 import toast from 'react-hot-toast';
-import { User, Edit, Save, X } from 'lucide-react';
+import { User, Edit, Save, X, ChefHat, BookOpen, Star } from 'lucide-react';
 import RecipeCard from '../components/RecipeCard';
 
 const Profile = () => {
@@ -180,11 +181,66 @@ const Profile = () => {
             ))}
           </div>
         ) : userRecipes?.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-600 mb-4">You haven't created any recipes yet.</p>
-            <a href="/recipes/create" className="btn-primary">
-              Create Your First Recipe
-            </a>
+          <div className="space-y-8">
+            {/* Hero Section for Empty State */}
+            <section className="text-center py-16 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-2xl">
+              <div className="max-w-4xl mx-auto px-4">
+                <ChefHat className="h-16 w-16 mx-auto mb-6" />
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                  Start Your Culinary
+                  <span className="block text-yellow-300">Journey Today</span>
+                </h2>
+                <p className="text-xl md:text-2xl mb-8 text-primary-100">
+                  Share your favorite recipes with the Pulp Kitchen community
+                </p>
+                <Link to="/recipes/create" className="btn-primary bg-white text-primary-600 hover:bg-gray-100 inline-flex items-center space-x-2">
+                  <ChefHat className="h-5 w-5" />
+                  <span>Create Your First Recipe</span>
+                </Link>
+              </div>
+            </section>
+
+            {/* Features Section */}
+            <section className="py-8">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">What You Can Do</h3>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  Join thousands of food lovers sharing their culinary creations
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="card text-center">
+                  <div className="bg-primary-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <ChefHat className="h-7 w-7 text-primary-600" />
+                  </div>
+                  <h4 className="text-lg font-semibold mb-2">Create Recipes</h4>
+                  <p className="text-gray-600 text-sm">
+                    Build detailed recipes with ingredients, instructions, and beautiful photos
+                  </p>
+                </div>
+
+                <div className="card text-center">
+                  <div className="bg-primary-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Star className="h-7 w-7 text-primary-600" />
+                  </div>
+                  <h4 className="text-lg font-semibold mb-2">Get Feedback</h4>
+                  <p className="text-gray-600 text-sm">
+                    Receive ratings and reviews from the community on your recipes
+                  </p>
+                </div>
+
+                <div className="card text-center">
+                  <div className="bg-primary-100 w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <BookOpen className="h-7 w-7 text-primary-600" />
+                  </div>
+                  <h4 className="text-lg font-semibold mb-2">Build Collection</h4>
+                  <p className="text-gray-600 text-sm">
+                    Save your favorite recipes and organize your personal cookbook
+                  </p>
+                </div>
+              </div>
+            </section>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

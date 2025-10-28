@@ -197,9 +197,15 @@ For complete setup instructions, API documentation, and troubleshooting:
 
 ## 📸 Screenshots
 
+### Home Page
+![Pulp Kitchen Home Page](screenshots/home-page.png)
+*Landing page showcasing the platform's main features and featured recipes*
+
+---
+
 > 📁 See the `Wireframes/` directory for UI design mockups
 
-- **Home Page** - Landing page with featured recipes
+### Coming Soon
 - **Recipe List** - Browse all public recipes
 - **Recipe Detail** - View recipe instructions and ingredients
 - **Recipe Builder** - Create and edit recipes with ingredient selector

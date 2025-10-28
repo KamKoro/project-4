@@ -25,14 +25,15 @@ const Home = () => {
     }
   );
 
-  const { data: recommendedRecipes, isLoading: isLoadingRecommended } = useQuery(
-    'recommended-recipes',
-    () => recipesAPI.getRecommendedRecipes(),
-    {
-      enabled: !!user, // Only fetch if user is logged in
-      select: (response) => response.data,
-    }
-  );
+  // Recommended recipes - temporarily disabled
+  // const { data: recommendedRecipes, isLoading: isLoadingRecommended } = useQuery(
+  //   'recommended-recipes',
+  //   () => recipesAPI.getRecommendedRecipes(),
+  //   {
+  //     enabled: !!user, // Only fetch if user is logged in
+  //     select: (response) => response.data,
+  //   }
+  // );
 
   return (
     <div className="space-y-12">
@@ -104,8 +105,8 @@ const Home = () => {
         </section>
       )}
 
-      {/* Recommended For You - Only for logged-in users */}
-      {user && recommendedRecipes && recommendedRecipes.length > 0 && (
+      {/* Recommended For You - Temporarily disabled */}
+      {/* {user && recommendedRecipes && recommendedRecipes.length > 0 && (
         <section>
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -138,7 +139,7 @@ const Home = () => {
             </div>
           )}
         </section>
-      )}
+      )} */}
 
       {/* Featured Recipes */}
       <section>
