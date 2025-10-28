@@ -1,3 +1,3 @@
 web: gunicorn --pythonpath backend recipe_app.wsgi --log-file -
-release: python backend/manage.py migrate
+release: python3 backend/manage.py migrate
 
