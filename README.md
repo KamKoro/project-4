@@ -27,18 +27,17 @@ Pulp Kitchen is a full-stack social recipe platform where food enthusiasts can c
 - 🔐 **User Authentication** - Secure registration and JWT-based login
 - 📝 **Recipe Management** - Create, edit, and delete your own recipes
 - 🌍 **Public Recipe Feed** - Discover recipes from the community
-- ⭐ **Rating System** - Rate recipes from 1-5 stars
+- ⭐ **Rating System** - Rate recipes with half-star precision (0.5-5 stars)
 - 💾 **Save Recipes** - Bookmark your favorite recipes for later
-- 👤 **User Profiles** - Personalized profiles with bio and stats
+- 👤 **User Profiles** - Personalized profiles with bio and username display
 - 🥗 **Ingredient Database** - 500+ pre-populated ingredients with categories
 - 📊 **Difficulty Levels** - Easy, Medium, Hard recipe classifications
-- 🍕 **Food Types** - Italian, Mexican, Chinese, Thai, Japanese, Greek, Indian, American cuisines
-
-### Stretch Features (Coming Soon)
-- 💬 Recipe comments and discussions
-- 🔍 Advanced search and filtering
-- 🏷️ Recipe categories and tags
-- 👥 Social features (follow users, activity feed)
+- 🍽️ **Food Types** - 12 categories (appetizer, main course, dessert, soup, salad, etc.)
+- 🌎 **Cuisine Filter** - 17 cuisines (Italian, Mexican, Chinese, Thai, Japanese, Indian, French, Greek, Spanish, Middle Eastern, Korean, Vietnamese, Mediterranean, Caribbean, African, American, Other)
+- 💬 **Comments** - Discuss and share feedback on recipes
+- 🔍 **Advanced Filtering** - Search by name, cuisine, difficulty, cook time, and ratings (compact single-row filter bar)
+- 🔄 **Sort Options** - Newest, oldest, or alphabetical ordering
+- 📏 **Unit Conversion** - Automatic conversion between metric and imperial measurements
 
 ## 🛠 Tech Stack
 
@@ -70,17 +69,26 @@ project-4/
 ├── backend/                    # Django REST API
 │   ├── recipe_app/            # Project settings
 │   ├── recipes/               # Recipe management app
+│   │   ├── migrations/       # Database migrations
+│   │   ├── management/       # Custom commands
+│   │   ├── models.py         # Recipe, Rating, Comment models
+│   │   ├── serializers.py    # DRF serializers
+│   │   ├── views.py          # API views
+│   │   └── pagination.py     # Custom pagination
 │   ├── users/                 # Authentication app
 │   ├── manage.py
 │   ├── requirements.txt
 │   └── README.md             ⭐ Backend documentation
 ├── frontend/                   # React application
+│   ├── public/               # Static assets
+│   │   ├── index.html
+│   │   └── manifest.json     # PWA manifest
 │   ├── src/                   # Source code
-│   │   ├── components/       # UI components
-│   │   ├── pages/            # Route pages
-│   │   ├── contexts/         # React contexts
-│   │   ├── services/         # API layer
-│   │   └── utils/            # Helpers
+│   │   ├── components/       # UI components (.jsx)
+│   │   ├── pages/            # Route pages (.jsx)
+│   │   ├── contexts/         # React contexts (.jsx)
+│   │   ├── services/         # API layer (.js)
+│   │   └── utils/            # Helpers (.js)
 │   ├── package.json
 │   └── README.md             ⭐ Frontend documentation
 ├── ERD/                        # Database diagrams
@@ -130,7 +138,7 @@ python manage.py migrate
 # Populate ingredient database (500+ ingredients)
 python manage.py populate_ingredients
 
-# Seed sample data (8 users with 19 recipes)
+# Seed sample data (8 users with 40 recipes)
 python manage.py seed_data
 
 # (Optional) Create admin superuser
@@ -144,8 +152,9 @@ python manage.py runserver
 ✅ Admin panel at `http://localhost:8000/admin`
 
 **Seed User Credentials:**
-- Usernames: `john_doe`, `jane_smith`, `mike_wilson`, `sarah_jones`, `david_brown`, `emily_chen`, `carlos_garcia`, `lisa_anderson`
+- Usernames: `john_doe`, `jane_smith`, `chef_marco`, `zara_k`, `spice_king`, `noodle_queen`, `taco_chef`, `amelie_b`
 - Password: `Password1!` (for all users)
+- Each user has **5 recipes** from various cuisines
 - **Note:** Half the users use metric measurements (g, kg, ml, l), half use imperial (cups, oz, lb)
 
 #### 3️⃣ Frontend Setup
@@ -204,7 +213,7 @@ For complete setup instructions, API documentation, and troubleshooting:
 ```bash
 # Backend - Seed database with sample data
 python manage.py populate_ingredients  # 500+ ingredients
-python manage.py seed_data             # 7 users, 16 recipes
+python manage.py seed_data             # 8 users, 40 recipes (5 per user)
 
 # Run tests
 python manage.py test      # Backend tests

@@ -269,10 +269,7 @@ const RecipeDetail = () => {
               <div className="flex items-center space-x-1">
                 <ChefHat className="h-4 w-4" />
                 <span>
-                  {recipe.author.first_name 
-                    ? recipe.author.first_name
-                    : recipe.author.username
-                  }
+                  {recipe.author.username}
                 </span>
               </div>
               <div className="flex items-center space-x-1">

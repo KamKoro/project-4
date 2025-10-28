@@ -14,6 +14,12 @@ Django REST API for the Pulp Kitchen recipe sharing platform.
 | **CORS Headers** | 4.3.1 | Cross-origin requests |
 | **Python Decouple** | 3.8 | Environment variables |
 
+### Code Quality
+- PEP 8 compliant code formatting
+- Pylint configuration for Django projects
+- Proper import ordering (stdlib → third-party → local)
+- Clean, well-documented codebase
+
 ## 📁 Project Structure
 
 ```
@@ -90,7 +96,7 @@ backend/
    python manage.py populate_ingredients
    ```
 
-7. **Seed sample data** (8 users, 19 recipes)
+7. **Seed sample data** (8 users, 40 recipes)
    ```bash
    python manage.py seed_data
    ```
@@ -111,12 +117,13 @@ backend/
 ### Test Credentials
 
 **Seeded Users:**
-- Usernames: `john_doe`, `jane_smith`, `mike_wilson`, `sarah_jones`, `david_brown`, `emily_chen`, `carlos_garcia`, `lisa_anderson`
+- Usernames: `john_doe`, `jane_smith`, `chef_marco`, `zara_k`, `spice_king`, `noodle_queen`, `taco_chef`, `amelie_b`
 - Password: `Password1!` (all users)
+- Each user has **5 recipes** from diverse cuisines
 
 **Measurement Systems:**
-- **Metric users** (g, kg, ml, l): `jane_smith`, `sarah_jones`, `emily_chen`, `lisa_anderson`
-- **Imperial users** (cups, oz, lb): `john_doe`, `mike_wilson`, `david_brown`, `carlos_garcia`
+- **Metric users** (g, kg, ml, l): `jane_smith`, `zara_k`, `noodle_queen`, `amelie_b`
+- **Imperial users** (cups, oz, lb): `john_doe`, `chef_marco`, `spice_king`, `taco_chef`
 
 ## 📡 API Endpoints
 
@@ -138,14 +145,24 @@ backend/
 | PUT | `/api/recipes/{id}/` | Update recipe | ✅ Owner |
 | DELETE | `/api/recipes/{id}/` | Delete recipe | ✅ Owner |
 | GET | `/api/recipes/my-recipes/` | Get user's recipes | ✅ |
-| GET | `/api/recipes/saved/` | Get saved recipes | ✅ |
+| GET | `/api/recipes/recommended/` | Get recommended recipes | ✅ |
+
+**Recipe List Query Parameters:**
+- `search` - Search in title and description
+- `food_type` - Filter by food type (appetizer, main_course, dessert, etc.)
+- `cuisine` - Filter by cuisine (italian, mexican, chinese, thai, etc.)
+- `difficulty` - Filter by difficulty (easy, medium, hard)
+- `max_cook_time` - Filter by maximum cook time in minutes
+- `min_rating` - Filter by minimum average rating
+- `ordering` - Sort results (created_at, -created_at, title, -title)
+- `page_size` - Number of results per page (default: 20, max: 100)
+- `page` - Page number for pagination
 
 ### Ratings
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
-| POST | `/api/recipes/{id}/rate/` | Rate recipe (1-5) | ✅ |
-| PUT | `/api/recipes/{id}/rate/` | Update rating | ✅ |
-| DELETE | `/api/recipes/{id}/rate/` | Delete rating | ✅ |
+| POST | `/api/recipes/{id}/rate/` | Rate recipe (0.5-5.0 stars) | ✅ |
+| DELETE | `/api/recipes/{id}/rate/delete/` | Delete rating | ✅ |
 
 ### Saved Recipes
 | Method | Endpoint | Description | Auth |
@@ -159,17 +176,25 @@ backend/
 | GET | `/api/ingredients/` | List ingredients | ❌ |
 | GET | `/api/ingredients/categories/` | List categories | ❌ |
 
+### Comments
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/recipes/{id}/comments/` | List recipe comments | ❌ |
+| POST | `/api/recipes/{id}/comments/` | Add comment | ✅ |
+| DELETE | `/api/comments/{id}/` | Delete comment | ✅ Owner |
+
 ## 🗄 Database Models
 
 ### User
 - Custom user model extending `AbstractUser`
 - Fields: `username`, `email`, `first_name`, `last_name`, `bio`, `profile_picture`
 - Email is unique and required
+- Username is the primary identifier displayed throughout the application
 
 ### Recipe
-- Fields: `title`, `description`, `author`, `image`, `prep_time`, `cook_time`, `servings`, `difficulty`, `food_type`, `is_public`
-- Relationships: ForeignKey to User (author), OneToMany to RecipeIngredient, Instruction
-- Choices: difficulty (easy/medium/hard), food_type (8 cuisines)
+- Fields: `title`, `description`, `author`, `image`, `prep_time`, `cook_time`, `servings`, `difficulty`, `food_type`, `cuisine`, `is_public`
+- Relationships: ForeignKey to User (author), OneToMany to RecipeIngredient, Instruction, Rating, Comment
+- Choices: difficulty (easy/medium/hard), food_type (12 types), cuisine (17 options)
 
 ### IngredientCategory
 - Fields: `name`
@@ -191,12 +216,16 @@ backend/
 ### Rating
 - Fields: `recipe`, `user`, `rating`, `created_at`
 - Unique constraint: one rating per user per recipe
-- Rating range: 1-5 stars
+- Rating range: 0.5-5.0 stars (half-star increments)
 
 ### SavedRecipe
 - Fields: `user`, `recipe`, `saved_at`
 - Unique constraint: user can save recipe once
 - Bookmarking system
+
+### Comment
+- Fields: `recipe`, `user`, `text`, `created_at`, `updated_at`
+- Users can comment on recipes with timestamp tracking
 
 ## ⚙️ Management Commands
 
@@ -204,8 +233,9 @@ backend/
 # Populate 500+ ingredients across 10 categories
 python manage.py populate_ingredients
 
-# Seed 8 users and 19 recipes with ratings
+# Seed 8 users and 40 recipes (5 per user) with ratings and comments
 # Half the users use metric measurements, half use imperial
+# Includes diverse cuisines and dessert recipes
 python manage.py seed_data
 
 # Create admin superuser (interactive)

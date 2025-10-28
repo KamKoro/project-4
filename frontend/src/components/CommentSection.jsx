@@ -1,3 +1,13 @@
+/**
+ * Comment Section Component
+ * 
+ * Displays and manages comments for a recipe.
+ * Features:
+ * - View all comments with user info and timestamps
+ * - Add new comments (requires authentication)
+ * - Delete own comments
+ * - Real-time relative timestamps (e.g., "2h ago", "3d ago")
+ */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
@@ -6,11 +16,15 @@ import { useAuth } from '../contexts/AuthContext';
 import { MessageCircle, Trash2, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 
+/**
+ * @param {number} recipeId - ID of the recipe to show comments for
+ */
 const CommentSection = ({ recipeId }) => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const [commentText, setCommentText] = useState('');
 
+  // Fetch comments for this recipe
   const { data: comments, isLoading } = useQuery(
     ['comments', recipeId],
     () => recipesAPI.getComments(recipeId),
@@ -19,6 +33,7 @@ const CommentSection = ({ recipeId }) => {
     }
   );
 
+  // Mutation for adding a new comment
   const addCommentMutation = useMutation(
     (text) => recipesAPI.addComment(recipeId, text),
     {
@@ -33,6 +48,7 @@ const CommentSection = ({ recipeId }) => {
     }
   );
 
+  // Mutation for deleting a comment
   const deleteCommentMutation = useMutation(
     (commentId) => recipesAPI.deleteComment(commentId),
     {
@@ -46,6 +62,7 @@ const CommentSection = ({ recipeId }) => {
     }
   );
 
+  // Handle comment form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!commentText.trim()) {
@@ -59,12 +76,18 @@ const CommentSection = ({ recipeId }) => {
     addCommentMutation.mutate(commentText);
   };
 
+  // Handle comment deletion with confirmation
   const handleDelete = (commentId) => {
     if (window.confirm('Are you sure you want to delete this comment?')) {
       deleteCommentMutation.mutate(commentId);
     }
   };
 
+  /**
+   * Format timestamp as relative time (e.g., "2h ago", "3d ago")
+   * @param {string} dateString - ISO date string
+   * @returns {string} Formatted relative time
+   */
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const now = new Date();
@@ -95,10 +118,7 @@ const CommentSection = ({ recipeId }) => {
             <div className="flex-shrink-0">
               <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
                 <span className="text-white font-semibold text-sm">
-                  {user.first_name 
-                    ? user.first_name[0].toUpperCase()
-                    : user.username[0].toUpperCase()
-                  }
+                  {user.username[0].toUpperCase()}
                 </span>
               </div>
             </div>
@@ -152,10 +172,7 @@ const CommentSection = ({ recipeId }) => {
               <div className="flex-shrink-0">
                 <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
                   <span className="text-white font-semibold text-sm">
-                    {comment.user.first_name 
-                      ? comment.user.first_name[0].toUpperCase()
-                      : comment.user.username[0].toUpperCase()
-                    }
+                    {comment.user.username[0].toUpperCase()}
                   </span>
                 </div>
               </div>
@@ -163,10 +180,7 @@ const CommentSection = ({ recipeId }) => {
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center space-x-2">
                     <span className="font-semibold text-gray-900">
-                      {comment.user.first_name 
-                        ? comment.user.first_name
-                        : comment.user.username
-                      }
+                      {comment.user.username}
                     </span>
                     <span className="text-gray-500 text-sm">•</span>
                     <span className="text-gray-500 text-sm">{formatDate(comment.created_at)}</span>

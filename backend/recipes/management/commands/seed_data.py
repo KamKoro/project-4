@@ -28,12 +28,12 @@ class Command(BaseCommand):
         user_data = [
             {'username': 'john_doe', 'email': 'john@example.com', 'first_name': 'John', 'last_name': 'Doe', 'bio': 'Food enthusiast and home cook', 'use_metric': False},
             {'username': 'jane_smith', 'email': 'jane@example.com', 'first_name': 'Jane', 'last_name': 'Smith', 'bio': 'Professional chef with 10 years experience', 'use_metric': True},
-            {'username': 'mike_wilson', 'email': 'mike@example.com', 'first_name': 'Mike', 'last_name': 'Wilson', 'bio': 'Baker and pastry lover', 'use_metric': False},
-            {'username': 'sarah_jones', 'email': 'sarah@example.com', 'first_name': 'Sarah', 'last_name': 'Jones', 'bio': 'Vegan cooking specialist', 'use_metric': True},
-            {'username': 'david_brown', 'email': 'david@example.com', 'first_name': 'David', 'last_name': 'Brown', 'bio': 'BBQ master and grill expert', 'use_metric': False},
-            {'username': 'emily_chen', 'email': 'emily@example.com', 'first_name': 'Emily', 'last_name': 'Chen', 'bio': 'Asian cuisine expert and food blogger', 'use_metric': True},
-            {'username': 'carlos_garcia', 'email': 'carlos@example.com', 'first_name': 'Carlos', 'last_name': 'Garcia', 'bio': 'Mexican food enthusiast and taco connoisseur', 'use_metric': False},
-            {'username': 'lisa_anderson', 'email': 'lisa@example.com', 'first_name': 'Lisa', 'last_name': 'Anderson', 'bio': 'French cuisine lover and wine enthusiast', 'use_metric': True},
+            {'username': 'chef_marco', 'email': 'marco@example.com', 'first_name': 'Marco', 'last_name': 'Rossi', 'bio': 'Italian chef and pastry enthusiast', 'use_metric': False},
+            {'username': 'zara_k', 'email': 'zara@example.com', 'first_name': 'Zara', 'last_name': 'Khan', 'bio': 'Plant-based cooking specialist', 'use_metric': True},
+            {'username': 'spice_king', 'email': 'david@example.com', 'first_name': 'David', 'last_name': 'Rodriguez', 'bio': 'BBQ master and grill expert', 'use_metric': False},
+            {'username': 'noodle_queen', 'email': 'mei@example.com', 'first_name': 'Mei', 'last_name': 'Wong', 'bio': 'Asian cuisine expert and food blogger', 'use_metric': True},
+            {'username': 'taco_chef', 'email': 'carlos@example.com', 'first_name': 'Carlos', 'last_name': 'Morales', 'bio': 'Mexican food enthusiast and street food expert', 'use_metric': False},
+            {'username': 'amelie_b', 'email': 'amelie@example.com', 'first_name': 'Amelie', 'last_name': 'Beaumont', 'bio': 'French pastry chef and wine enthusiast', 'use_metric': True},
         ]
         
         # Dictionary to track metric preference per user
@@ -1064,6 +1064,6 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(f'Created {Recipe.objects.count()} recipes'))
         self.stdout.write(self.style.SUCCESS(f'Created {Comment.objects.count()} comments'))
         self.stdout.write(self.style.SUCCESS(f'All user passwords: Password1!'))
-        self.stdout.write(self.style.SUCCESS(f'Metric users: jane_smith, sarah_jones, emily_chen, lisa_anderson'))
-        self.stdout.write(self.style.SUCCESS(f'Imperial users: john_doe, mike_wilson, david_brown, carlos_garcia'))
+        self.stdout.write(self.style.SUCCESS(f'Metric users: jane_smith, zara_k, noodle_queen, amelie_b'))
+        self.stdout.write(self.style.SUCCESS(f'Imperial users: john_doe, chef_marco, spice_king, taco_chef'))
 

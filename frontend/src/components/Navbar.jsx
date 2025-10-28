@@ -1,3 +1,15 @@
+/**
+ * Navbar Component
+ * 
+ * Main navigation bar for the application.
+ * Displays different menu items based on authentication state.
+ * 
+ * Features:
+ * - Responsive design
+ * - Different menu for authenticated/guest users
+ * - Active route highlighting
+ * - User greeting with first name
+ */
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -7,6 +19,7 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
+  // Handle logout and redirect to home
   const handleLogout = () => {
     logout();
     navigate('/');
@@ -38,7 +51,7 @@ const Navbar = () => {
                 </Link>
                 <Link to="/profile" className="flex items-center space-x-1 text-gray-600 hover:text-primary-500 transition-colors">
                   <User className="h-4 w-4" />
-                  <span>{user.first_name}</span>
+                  <span>{user.username}</span>
                 </Link>
                 <button
                   onClick={handleLogout}

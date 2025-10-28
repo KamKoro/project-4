@@ -1,13 +1,29 @@
+/**
+ * Ingredient Selector Component
+ * 
+ * Searchable dropdown for selecting ingredients when creating/editing recipes.
+ * Features:
+ * - Search by ingredient name
+ * - Filter by category (Vegetables, Proteins, Dairy, etc.)
+ * - Auto-complete suggestions
+ * - Clear selection option
+ */
 import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { recipesAPI } from '../services/api';
 import { Search, X, ChevronDown } from 'lucide-react';
 
+/**
+ * @param {Function} onSelect - Callback when ingredient is selected
+ * @param {Object} selectedIngredient - Currently selected ingredient object
+ * @param {Function} onClear - Callback when selection is cleared
+ */
 const IngredientSelector = ({ onSelect, selectedIngredient, onClear }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
 
+  // Fetch ingredient categories for filtering
   const { data: categories } = useQuery(
     'ingredient-categories',
     () => recipesAPI.getIngredientCategories(),
@@ -16,6 +32,8 @@ const IngredientSelector = ({ onSelect, selectedIngredient, onClear }) => {
     }
   );
 
+  // Fetch ingredients based on search and category filter
+  // Only fetches when dropdown is open (enabled: isOpen)
   const { data: ingredients, isLoading, error } = useQuery(
     ['ingredients', searchTerm, selectedCategory],
     () => recipesAPI.getIngredients({
@@ -24,23 +42,26 @@ const IngredientSelector = ({ onSelect, selectedIngredient, onClear }) => {
     }),
     {
       select: (response) => response.data,
-      enabled: isOpen,
-      staleTime: 5 * 60 * 1000, // 5 minutes
+      enabled: isOpen,  // Only fetch when dropdown is open
+      staleTime: 5 * 60 * 1000,  // Cache for 5 minutes
     }
   );
 
+  // Handle ingredient selection
   const handleSelect = (ingredient) => {
     onSelect(ingredient);
     setIsOpen(false);
     setSearchTerm('');
   };
 
+  // Handle clear selection
   const handleClear = () => {
     onClear();
     setIsOpen(false);
     setSearchTerm('');
   };
 
+  // Reset search and category when dropdown is opened
   useEffect(() => {
     if (isOpen) {
       setSearchTerm('');

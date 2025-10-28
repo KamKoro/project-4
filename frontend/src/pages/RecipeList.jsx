@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { recipesAPI } from '../services/api';
-import { Search, Plus, Heart, Bookmark, Share2, Clock, Users, Star, ChefHat } from 'lucide-react';
+import { Search, Plus, Clock, Users, Star, ChefHat } from 'lucide-react';
 
 const SocialRecipeCard = ({ recipe }) => {
   const formatTime = (minutes) => {
@@ -35,19 +35,13 @@ const SocialRecipeCard = ({ recipe }) => {
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
             <span className="text-white font-semibold text-sm">
-              {recipe.author.first_name 
-                ? recipe.author.first_name[0].toUpperCase()
-                : recipe.author.username[0].toUpperCase()
-              }
+              {recipe.author.username[0].toUpperCase()}
             </span>
           </div>
           <div className="flex-1">
             <div className="flex items-center space-x-2">
               <h3 className="font-semibold text-gray-900">
-                {recipe.author.first_name 
-                  ? recipe.author.first_name
-                  : recipe.author.username
-                }
+                {recipe.author.username}
               </h3>
               <span className="text-gray-500 text-sm">•</span>
               <span className="text-gray-500 text-sm">{formatDate(recipe.created_at)}</span>
@@ -189,11 +183,11 @@ const RecipeList = () => {
               />
             </div>
             
-            <div className="flex gap-2 overflow-x-auto pb-2">
+            <div className="flex gap-2">
               <select
                 value={foodType}
                 onChange={(e) => setFoodType(e.target.value)}
-                className="px-3 py-1 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-shrink-0 px-2 py-1 text-xs border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
               >
                 <option value="">All Types</option>
                 <option value="appetizer">Appetizer</option>
@@ -213,7 +207,7 @@ const RecipeList = () => {
               <select
                 value={cuisine}
                 onChange={(e) => setCuisine(e.target.value)}
-                className="px-3 py-1 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-shrink-0 px-2 py-1 text-xs border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
               >
                 <option value="">All Cuisines</option>
                 <option value="american">American</option>
@@ -238,7 +232,7 @@ const RecipeList = () => {
               <select
                 value={difficulty}
                 onChange={(e) => setDifficulty(e.target.value)}
-                className="px-3 py-1 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-shrink-0 px-2 py-1 text-xs border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
               >
                 <option value="">All Difficulties</option>
                 <option value="easy">Easy</option>
@@ -249,7 +243,7 @@ const RecipeList = () => {
               <select
                 value={maxCookTime}
                 onChange={(e) => setMaxCookTime(e.target.value)}
-                className="px-3 py-1 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-shrink-0 px-2 py-1 text-xs border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
               >
                 <option value="">All Cook Times</option>
                 <option value="15">Under 15 min</option>
@@ -262,7 +256,7 @@ const RecipeList = () => {
               <select
                 value={sortOrder}
                 onChange={(e) => setSortOrder(e.target.value)}
-                className="px-3 py-1 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="flex-shrink-0 px-2 py-1 text-xs border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
               >
                 <option value="-created_at">Newest First</option>
                 <option value="created_at">Oldest First</option>

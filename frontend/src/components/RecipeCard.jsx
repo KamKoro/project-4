@@ -1,9 +1,26 @@
+/**
+ * Recipe Card Component
+ * 
+ * Displays a preview card for a recipe with key information:
+ * - Recipe image, title, and description
+ * - Author, difficulty, cook time, servings
+ * - Average rating and number of reviews
+ * - Clickable link to full recipe details
+ */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Users, ChefHat } from 'lucide-react';
 import StarRating from './StarRating';
 
+/**
+ * @param {Object} recipe - Recipe object with all details
+ */
 const RecipeCard = ({ recipe }) => {
+  /**
+   * Format cooking time in human-readable format
+   * @param {number} minutes - Time in minutes
+   * @returns {string} Formatted time (e.g., "1h 30m", "45m")
+   */
   const formatTime = (minutes) => {
     if (!minutes) return 'N/A';
     if (minutes < 60) return `${minutes}m`;
@@ -12,6 +29,11 @@ const RecipeCard = ({ recipe }) => {
     return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
   };
 
+  /**
+   * Get Tailwind classes for difficulty badge
+   * @param {string} difficulty - Recipe difficulty level
+   * @returns {string} Tailwind CSS classes
+   */
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case 'easy': return 'text-green-600 bg-green-100';
@@ -78,10 +100,7 @@ const RecipeCard = ({ recipe }) => {
           <div className="flex items-center space-x-2">
             <ChefHat className="h-4 w-4 text-gray-400" />
             <span className="text-sm text-gray-600">
-              {recipe.author.first_name 
-                ? recipe.author.first_name
-                : recipe.author.username
-              }
+              {recipe.author.username}
             </span>
           </div>
           

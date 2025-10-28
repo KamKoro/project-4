@@ -1,6 +1,19 @@
-// Unit conversion utilities for recipe measurements
+/**
+ * Unit Conversion Utilities for Recipe Measurements
+ * 
+ * Provides automatic conversion between imperial and metric measurement systems.
+ * Supports volume (cups, ml, liters), weight (oz, g, kg), and count-based units.
+ * 
+ * Features:
+ * - Bidirectional conversion (imperial ⟷ metric)
+ * - Smart rounding for readability
+ * - Handles edge cases (small amounts, count-based units)
+ */
 
-// Conversion factors from imperial to metric
+/**
+ * Conversion factors from imperial to metric
+ * Maps imperial units to their metric equivalent with conversion factors
+ */
 const CONVERSIONS = {
   // Volume
   cup: { metric: 'ml', factor: 236.588 },
@@ -41,7 +54,10 @@ const CONVERSIONS = {
   'to taste': { metric: 'to taste', factor: 1 },
 };
 
-// Reverse conversions (metric to imperial)
+/**
+ * Reverse conversions (metric to imperial)
+ * Maps metric units to their imperial equivalent with conversion factors
+ */
 const REVERSE_CONVERSIONS = {
   // Volume
   ml: { imperial: 'cup', factor: 0.00423 },

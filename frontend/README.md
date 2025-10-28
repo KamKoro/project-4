@@ -23,30 +23,32 @@ frontend/
 │   └── index.html           # HTML template
 ├── src/
 │   ├── components/          # Reusable UI components
-│   │   ├── Navbar.js              # Navigation bar
-│   │   ├── RecipeCard.js          # Recipe card component
-│   │   ├── IngredientSelector.js  # Ingredient picker
-│   │   ├── UnitsSelector.js       # Unit of measurement picker
-│   │   └── ProtectedRoute.js      # Auth route wrapper
+│   │   ├── Navbar.jsx             # Navigation bar
+│   │   ├── RecipeCard.jsx         # Recipe card component
+│   │   ├── IngredientSelector.jsx # Ingredient picker
+│   │   ├── UnitsSelector.jsx      # Unit of measurement picker
+│   │   ├── CommentSection.jsx     # Recipe comments
+│   │   ├── StarRating.jsx         # Star rating component
+│   │   └── ProtectedRoute.jsx     # Auth route wrapper
 │   ├── pages/               # Page components
-│   │   ├── Home.js                # Landing page
-│   │   ├── Login.js               # Login form
-│   │   ├── Register.js            # Registration form
-│   │   ├── RecipeList.js          # Browse all recipes
-│   │   ├── RecipeDetail.js        # Single recipe view
-│   │   ├── RecipeCreate.js        # Create new recipe
-│   │   ├── RecipeEdit.js          # Edit recipe form
-│   │   ├── Profile.js             # User profile page
-│   │   └── SavedRecipes.js        # Bookmarked recipes
+│   │   ├── Home.jsx               # Landing page
+│   │   ├── Login.jsx              # Login form
+│   │   ├── Register.jsx           # Registration form
+│   │   ├── RecipeList.jsx         # Browse all recipes
+│   │   ├── RecipeDetail.jsx       # Single recipe view
+│   │   ├── RecipeCreate.jsx       # Create new recipe
+│   │   ├── RecipeEdit.jsx         # Edit recipe form
+│   │   ├── Profile.jsx            # User profile page
+│   │   └── SavedRecipes.jsx       # Bookmarked recipes
 │   ├── contexts/
-│   │   └── AuthContext.js         # Authentication context
+│   │   └── AuthContext.jsx        # Authentication context
 │   ├── services/
 │   │   └── api.js                 # API service layer
 │   ├── utils/
 │   │   ├── cn.js                  # Class name utility
 │   │   └── unitConversion.js      # Unit conversion helpers
-│   ├── App.js               # Main app component
-│   ├── index.js             # App entry point
+│   ├── App.jsx              # Main app component
+│   ├── index.js             # App entry point (required .js for CRA)
 │   └── index.css            # Global styles & Tailwind
 ├── package.json             # Dependencies & scripts
 ├── tailwind.config.js       # Tailwind configuration
@@ -112,18 +114,22 @@ npm run eject
 
 ### Recipe Management
 - Browse public recipes with pagination
-- Search and filter recipes
+- Search and filter by name, cuisine, difficulty, cook time
+- Sort by newest, oldest, or alphabetical
 - Create recipes with dynamic ingredient forms
 - Edit/delete own recipes
 - Upload recipe images
-- Multiple difficulty levels
-- Cuisine type selection
+- Multiple difficulty levels (easy, medium, hard)
+- 12 food type categories
+- 17 cuisine options
+- Automatic unit conversion between metric/imperial
 
 ### Social Features
-- Rate recipes (1-5 stars)
+- Rate recipes with half-star precision (0.5-5.0 stars)
 - Save/bookmark favorite recipes
+- Comment on recipes with discussions
 - View user profiles
-- See recipe authors
+- See recipe authors by username
 
 ### UI/UX
 - Responsive design (mobile, tablet, desktop)
@@ -132,6 +138,7 @@ npm run eject
 - Toast notifications
 - Clean, modern interface
 - Intuitive navigation
+- Compact filter bar
 
 ## 🔌 API Integration
 
@@ -178,6 +185,11 @@ unsaveRecipe(id)
 // Ingredients
 fetchIngredients()
 fetchIngredientCategories()
+
+// Comments
+getComments(recipeId)
+addComment(recipeId, text)
+deleteComment(commentId)
 ```
 
 ## 🎯 Component Overview
@@ -198,6 +210,8 @@ fetchIngredientCategories()
 **RecipeCard** - Recipe preview card with image, title, rating  
 **IngredientSelector** - Searchable dropdown for ingredient selection  
 **UnitsSelector** - Dropdown for measurement units  
+**CommentSection** - Recipe comments with add/delete functionality  
+**StarRating** - Interactive star rating component with half-star support  
 **ProtectedRoute** - Route wrapper requiring authentication  
 
 ## 🎨 Styling
@@ -354,8 +368,6 @@ npm run build:css  # if you have this script
 
 ## 🔮 Future Enhancements
 
-- [ ] Recipe comments and discussions
-- [ ] Advanced search with filters
 - [ ] Recipe tags and categories
 - [ ] Social features (follow users, feed)
 - [ ] Recipe collections/meal plans
@@ -364,6 +376,8 @@ npm run build:css  # if you have this script
 - [ ] Dark mode toggle
 - [ ] Multi-language support
 - [ ] Recipe import from URL
+- [ ] Advanced filtering options (dietary restrictions, allergens)
+
 
 ---
 

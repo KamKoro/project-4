@@ -1,6 +1,26 @@
+/**
+ * Star Rating Component
+ * 
+ * Displays star ratings with support for half-stars (0.5-5.0 scale).
+ * Can be used in display-only mode or interactive mode for user input.
+ * 
+ * Features:
+ * - Half-star precision (0.5, 1.0, 1.5, 2.0, etc.)
+ * - Interactive mode with click zones for full and half stars
+ * - Hover preview in interactive mode
+ * - Multiple sizes (sm, md, lg)
+ * - Optional numeric display
+ */
 import React from 'react';
 import { Star } from 'lucide-react';
 
+/**
+ * @param {number} rating - Current rating value (0-5)
+ * @param {Function} onRatingChange - Callback when rating changes (interactive mode only)
+ * @param {boolean} interactive - Enable click/hover interactions
+ * @param {string} size - Size variant ('sm', 'md', 'lg')
+ * @param {boolean} showNumber - Display numeric rating next to stars
+ */
 const StarRating = ({ 
   rating = 0, 
   onRatingChange, 
@@ -10,6 +30,7 @@ const StarRating = ({
 }) => {
   const [hoveredRating, setHoveredRating] = React.useState(0);
   
+  // Size classes for different star sizes
   const sizeClasses = {
     sm: 'h-4 w-4',
     md: 'h-5 w-5',
@@ -18,7 +39,11 @@ const StarRating = ({
   
   const starSize = sizeClasses[size] || sizeClasses.md;
   
-  // Calculate how much of each star should be filled
+  /**
+   * Calculate how much of each star should be filled
+   * @param {number} starIndex - Index of the star (0-4)
+   * @returns {string} 'full', 'half', or 'empty'
+   */
   const getStarFill = (starIndex) => {
     const displayRating = interactive ? (hoveredRating || rating) : rating;
     const fillAmount = displayRating - starIndex;
@@ -28,12 +53,22 @@ const StarRating = ({
     return 'empty';
   };
   
+  /**
+   * Handle star click for rating input
+   * @param {number} starIndex - Index of clicked star
+   * @param {boolean} isHalf - Whether left half was clicked
+   */
   const handleStarClick = (starIndex, isHalf) => {
     if (!interactive || !onRatingChange) return;
     const newRating = starIndex + (isHalf ? 0.5 : 1);
     onRatingChange(newRating);
   };
   
+  /**
+   * Handle star hover for preview
+   * @param {number} starIndex - Index of hovered star
+   * @param {boolean} isHalf - Whether left half is hovered
+   */
   const handleStarHover = (starIndex, isHalf) => {
     if (!interactive) return;
     const hoverValue = starIndex + (isHalf ? 0.5 : 1);

@@ -1,0 +1,16 @@
+[MASTER]
+# Django-specific configuration
+load-plugins=pylint_django
+
+[TYPECHECK]
+# List of members which are set dynamically and missed by pylint inference
+generated-members=objects,DoesNotExist,MultipleObjectsReturned,id,pk,_meta
+
+[MESSAGES CONTROL]
+# Disable warnings for Django-specific patterns
+disable=
+    missing-docstring,
+    too-few-public-methods,
+    too-many-ancestors,
+    import-outside-toplevel
+

@@ -1,0 +1,12 @@
+{
+  "reportGeneralTypeIssues": "none",
+  "reportOptionalMemberAccess": "none",
+  "reportAttributeAccessIssue": "none",
+  "pythonVersion": "3.11",
+  "pythonPlatform": "Darwin",
+  "extraPaths": [
+    "."
+  ]
+}
+
+
